@@ -1,0 +1,76 @@
+﻿<script type="text/x-template" id="s2RateWords">
+    <div class="jumbotron">
+        <p>
+            Ocena słów zgodnie z poniższą macierzą dopasowania. <br />
+            W tym etapie zostaną odrzucone słowa, których ocena jest niższa od parametru T = <%= T %>. Słowa wyznaczone w poprzednim
+            etapie zostały zaprezentowane poniżej. Po każdym z nich zostaje wypisane równanie na podstawie, którego oceniane
+            jest słowo. Odrzucone słowa prezentowane są proprzez zmianę jasności napisu. Słowa, które przechodzą do dalszej
+            analizy nie zmieniają koloru.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Macierz dopasowania</h3>
+            <table class="table" id="alignment-matrix">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A</th>
+                        <th>C</th>
+                        <th>G</th>
+                        <th>T</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">A</th>
+                        <td mtx-row="A" mtx-cell="A"><%= matrix[0][0] %></td>
+                        <td mtx-row="A" mtx-cell="C"><%= matrix[0][1] %></td>
+                        <td mtx-row="A" mtx-cell="G"><%= matrix[0][2] %></td>
+                        <td mtx-row="A" mtx-cell="T"><%= matrix[0][3] %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">C</th>
+                        <td mtx-row="C" mtx-cell="A"><%= matrix[1][0] %></td>
+                        <td mtx-row="C" mtx-cell="C"><%= matrix[1][1] %></td>
+                        <td mtx-row="C" mtx-cell="G"><%= matrix[1][2] %></td>
+                        <td mtx-row="C" mtx-cell="T"><%= matrix[1][3] %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">G</th>
+                        <td mtx-row="G" mtx-cell="A"><%= matrix[2][0] %></td>
+                        <td mtx-row="G" mtx-cell="C"><%= matrix[2][1] %></td>
+                        <td mtx-row="G" mtx-cell="G"><%= matrix[2][2] %></td>
+                        <td mtx-row="G" mtx-cell="T"><%= matrix[2][3] %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">T</th>
+                        <td mtx-row="T" mtx-cell="A"><%= matrix[3][0] %></td>
+                        <td mtx-row="T" mtx-cell="C"><%= matrix[3][1] %></td>
+                        <td mtx-row="T" mtx-cell="G"><%= matrix[3][2] %></td>
+                        <td mtx-row="T" mtx-cell="T"><%= matrix[3][3] %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Słowa</h3>
+        <div class="words-list" id="wordsList">
+
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="s2RateWords-word-list-item">
+    <div class="word-list-item" word-id="<%= id %>">
+        <div class="word-id">
+            <%= id %>)
+        </div>
+        <div class="word">
+            <%= str %>
+        </div>
+        <div class="word-rank">
+        </div>
+    </div>
+</script>

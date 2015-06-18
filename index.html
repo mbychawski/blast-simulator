@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MBI - Algorytm BLAST</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+        <div class="page-header" id="header"></div>
+        <div id="main-container"></div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////// -->
+    <script src="js/lib/jquery-2.1.3.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+    <script src="js/lib/jquery.blast.min.js"></script>
+    <script src="js/lib/velocity.min.js"></script>
+
+    <script src="js/utils.js"></script>
+
+    <script src="js/model/blast.js"></script>
+
+    <script src="js/view/home.js"></script>
+    <script src="js/view/settings.js"></script>
+    <script src="js/view/s1Init.js"></script>
+    <script src="js/view/s2RateWords.js"></script>
+    <script src="js/view/s3Search.js"></script>
+    <script src="js/view/s4Extend.js"></script>
+
+    <script src="js/appRouter.js"></script>
+
+    <script type="text/javascript">
+        utils.loadTemplates([
+            "templates/home.html",
+            "templates/settings.html",
+            "templates/s1Init.html",
+            "templates/s2RateWords.html",
+            "templates/s3Search.html",
+            "templates/s4Extend.html"
+        ]).done(function( templates ) {
+            window.templates = templates;
+            window.app = new AppRouter();
+        });
+    </script>
+  </body>
+</html>

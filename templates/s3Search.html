@@ -1,0 +1,47 @@
+﻿<script type="text/x-template" id="s3Search">
+    <div class="jumbotron">
+        <p>
+            Wyszukiwanie wystąpień poszczególnych słów w sekwencjach z bazy. <br/>
+            Poniżej przedstawiono słowa, które przeszły etap oceny oraz bazę sekwencji.
+            Pod każdym słowem znajdzie się opis, w której sekwencji z bazy i na jakiej pozycji znajduje się dane słowo,
+            np. S0[19] oznacza, że słowo zostało znalezione w pierwszej sekwencji z bazy na 19 pozycji.
+            Do dalszego etapu algorytmu nie przechodzą sekwencje,
+            w których nie występiło badane słowo, oraz słowa, które nie wystąpiły w żadnej z sekwencji.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Słowa</h3>
+            <div class="words-list" id="wordsList"></div>
+        </div>
+        <div class="col-sm-6">
+            <h3>Baza sekwencji</h3>
+            <div class="sequence-list" id="sequenceList"></div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="s3Search-word-list-item">
+    <div class="word-list-item" word-id="<%= id %>">
+        <div class="word-id">
+            <%= id %>)
+        </div>
+        <div class="word">
+            <%= str %>
+        </div>
+        <div class="word-matches">
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="s3Search-sequence-list-item">
+    <div class="sequence-scroller" sequence-id="<%= id %>">
+        <div class="sequence-id">
+            <%= id %>)
+        </div>
+        <div class="sequence">
+            <%= str %>
+        </div>
+        <div class="window"></div>
+    </div>
+</script>

@@ -1,0 +1,75 @@
+﻿<script type="text/x-template" id="s4Extend">
+    <div class="jumbotron">
+        <h3>Roszerzanie znalezionych dopasowań dla każdego słowa.</h3>
+        <p>
+            Poniżej znajdują się wszystkie pary: słowo - sekwencja z bazy, takie że słowo zostało znalezione w sekwencji.
+            Do słów (wyróżnione ciągi nukleotydów) dopisane są pozostałe nukleoty wchodzące w skład wyszukiwanej sekwencji.
+        </p>
+        <p>
+            Pod ostatnimi nukleotydami słów zostają zapisane wartości ich oceny a następnie rozpoczyna się proces rozszerzania.
+            Porównywana jest każda para odpowiadających sobie nukleotydów z wyszukiwanej sekwencji oraz z sekwencji z bazy. Na podstawie macierzy, sprawdzana jest wartość dopasowania
+            a następnie dodawana jest ona do aktualnej oceny.
+        </p>
+        <p>
+            Na koniec algorytmu zostają odrzucone te pary słowo - sekwencja, których wartość rozszerzania nie przekroczyła parametru C = <%=C%>
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <h3>Macierz dopasowania</h3>
+        <table class="table" id="alignment-matrix">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>C</th>
+                    <th>G</th>
+                    <th>T</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">A</th>
+                    <td mtx-row="A" mtx-cell="A"><%= matrix[0][0] %></td>
+                    <td mtx-row="A" mtx-cell="C"><%= matrix[0][1] %></td>
+                    <td mtx-row="A" mtx-cell="G"><%= matrix[0][2] %></td>
+                    <td mtx-row="A" mtx-cell="T"><%= matrix[0][3] %></td>
+                </tr>
+                <tr>
+                    <th scope="row">C</th>
+                    <td mtx-row="C" mtx-cell="A"><%= matrix[1][0] %></td>
+                    <td mtx-row="C" mtx-cell="C"><%= matrix[1][1] %></td>
+                    <td mtx-row="C" mtx-cell="G"><%= matrix[1][2] %></td>
+                    <td mtx-row="C" mtx-cell="T"><%= matrix[1][3] %></td>
+                </tr>
+                <tr>
+                    <th scope="row">G</th>
+                    <td mtx-row="G" mtx-cell="A"><%= matrix[2][0] %></td>
+                    <td mtx-row="G" mtx-cell="C"><%= matrix[2][1] %></td>
+                    <td mtx-row="G" mtx-cell="G"><%= matrix[2][2] %></td>
+                    <td mtx-row="G" mtx-cell="T"><%= matrix[2][3] %></td>
+                </tr>
+                <tr>
+                    <th scope="row">T</th>
+                    <td mtx-row="T" mtx-cell="A"><%= matrix[3][0] %></td>
+                    <td mtx-row="T" mtx-cell="C"><%= matrix[3][1] %></td>
+                    <td mtx-row="T" mtx-cell="G"><%= matrix[3][2] %></td>
+                    <td mtx-row="T" mtx-cell="T"><%= matrix[3][3] %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="matches-list"></div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="s4Extend-match-group">
+    <div class="match-group" word-id="<%= word.id %>" seq-id="<%= match.sequence.id %>" match-id="<%= match.id %>">
+        <div class="match-item-1"><%= querySeq.str %></div>
+        <div class="match-item-2"><%= match.sequence.str %></div>
+        <div class="rating"></div>
+        <div class="window"></div>
+    </div>
+</script>

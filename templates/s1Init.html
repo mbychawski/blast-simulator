@@ -1,0 +1,34 @@
+<script type="text/x-template" id="s1Init">
+    <div class="jumbotron">
+        <p>
+            Podział poszukiwanej sekwencji na słowa o długości L = <%= L %>
+        </p>
+    </div>
+    <div class="row">
+        <h3>Poszukiwana sekwencja</h3>
+
+        <div class="sequence-scroller">
+            <div class="sequence" id="query-seq">
+                <%= querySeq.str %>
+            </div>
+            <div class="window" id="query-seq-window"></div>
+        </div>
+    </div>
+    <div class="row">
+        <h3>Powstałe słowa</h3>
+        <div class="words-list" id="wordsList">
+
+        </div>
+    </div>
+</script>
+
+<script type="text/x-template" id="s1Init-word-list-item">
+    <div class="word-list-item">
+        <div class="wordId">
+            <%= id %>)
+        </div>
+        <div class="word" word-id="<%= id %>">
+            <%= str %>
+        </div>
+    </div>
+</script>
